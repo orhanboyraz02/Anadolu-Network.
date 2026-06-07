@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Anadolu Network | Ana Formül & Modüller | Son Cilt</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefcf5;
+      background-image: radial-gradient(circle at 10% 20%, rgba(210, 180, 140, 0.05) 0%, rgba(245, 240, 225, 0.4) 100%);
+      color: #2c2820;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* ana container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* başlık ve alt bilgi */
+    .hero {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #d9c7a7;
+      color: #3b2c1e;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      backdrop-filter: blur(2px);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #8b5a2b, #c49a6c, #5e3a1c);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.5rem;
+    }
+
+    .sub {
+      font-size: 1.1rem;
+      color: #5c4a33;
+      border-bottom: 2px solid #e2d5c0;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ANA FORMÜL - GÖRSEL DENKLEM */
+    .formula-wrapper {
+      background: #ffffffdd;
+      backdrop-filter: blur(8px);
+      border-radius: 56px;
+      padding: 2rem 1.5rem;
+      margin: 2rem 0 2.5rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      border: 1px solid rgba(210, 180, 140, 0.5);
+    }
+
+    .equation {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem 1rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .term {
+      background: #f4ebdb;
+      padding: 0.5rem 1rem;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #4e3b28;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+      transition: all 0.2s ease;
+    }
+
+    .plus {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #b87c4a;
+      margin: 0 -0.2rem;
+    }
+
+    .equals {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: #b87c4a20;
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      color: #8b5a2b;
+    }
+
+    .result {
+      background: linear-gradient(120deg, #2f5e3a, #3f724c);
+      padding: 0.6rem 1.5rem;
+      border-radius: 60px;
+      color: white;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      box-shadow: 0 6px 14px rgba(47,94,58,0.3);
+    }
+
+    @media (max-width: 780px) {
+      .equation { font-size: 0.9rem; gap: 0.4rem; }
+      .term { padding: 0.3rem 0.8rem; font-size: 0.85rem; }
+      .plus, .equals { font-size: 1.2rem; }
+      .result { font-size: 0.9rem; padding: 0.4rem 1rem; }
+      h1 { font-size: 1.9rem; }
+    }
+
+    .formula-note {
+      text-align: center;
+      margin-top: 1.8rem;
+      font-size: 0.95rem;
+      color: #6a5a48;
+      font-weight: 500;
+      border-top: 1px dashed #e2cdb5;
+      padding-top: 1.2rem;
+    }
+
+    /* MODÜLLER BÖLÜMÜ */
+    .modules-header {
+      text-align: center;
+      margin: 3rem 0 2rem;
+    }
+
+    .modules-header h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #4b3520;
+    }
+    .modules-header p {
+      color: #786c58;
+      max-width: 650px;
+      margin: 0.5rem auto 0;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .module-card {
+      background: #ffffffea;
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 1.5rem 1.5rem 2rem;
+      transition: all 0.25s ease;
+      border: 1px solid #efe2d0;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .module-card:hover {
+      transform: translateY(-6px);
+      border-color: #c8aa7a;
+      box-shadow: 0 20px 30px -12px rgba(94, 58, 28, 0.15);
+      background: #fffcf7;
+    }
+
+    .card-icon {
+      font-size: 2.6rem;
+      color: #b48c5c;
+      margin-bottom: 1rem;
+    }
+
+    .module-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #35291c;
+    }
+
+    .module-card p {
+      color: #5f5341;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+      line-height: 1.45;
+    }
+
+    .btn-detail {
+      background: none;
+      border: 1.5px solid #dac09e;
+      padding: 0.6rem 1rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #8b5a2b;
+      transition: 0.2s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      width: fit-content;
+      background: #fef6ed;
+    }
+
+    .btn-detail i {
+      font-size: 0.8rem;
+      transition: transform 0.2s;
+    }
+
+    .btn-detail:hover {
+      background: #e8d9c8;
+      border-color: #b2824a;
+      color: #5c3819;
+    }
+
+    .btn-detail:hover i {
+      transform: translateX(4px);
+    }
+
+    /* MODAL (DİYALOG) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(30, 24, 18, 0.75);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      visibility: hidden;
+      opacity: 0;
+      transition: visibility 0.2s, opacity 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .modal-container {
+      background: #fffcf5;
+      max-width: 550px;
+      width: 90%;
+      border-radius: 48px;
+      box-shadow: 0 40px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 0.2s ease;
+      border: 1px solid #eadbc8;
+    }
+
+    .modal-overlay.active .modal-container {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 2rem 0.8rem 2rem;
+      border-bottom: 2px solid #f0e2d2;
+    }
+    .modal-header h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #4c361f;
+    }
+    .close-modal {
+      background: #efe0ce;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s;
+      color: #6a4e2e;
+    }
+    .close-modal:hover {
+      background: #ddcdb5;
+      color: #3b2a1a;
+    }
+    .modal-body {
+      padding: 1.8rem 2rem 2.2rem;
+      max-height: 60vh;
+      overflow-y: auto;
+      color: #2e2a24;
+    }
+    .modal-body p {
+      margin-bottom: 1.2rem;
+      line-height: 1.55;
+    }
+    .modal-body strong {
+      color: #946b3e;
+    }
+    .modal-footer {
+      padding: 1rem 2rem 1.8rem;
+      background: #fdf8f0;
+      text-align: right;
+      font-size: 0.8rem;
+      color: #a78e70;
+      border-top: 1px solid #efdfcd;
+    }
+
+    /* footer */
+    .book-footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.85rem;
+      border-top: 1px solid #e1cfb7;
+      padding-top: 2rem;
+      color: #927f65;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
+
+    .footnote {
+      background: #f3ede5;
+      border-radius: 60px;
+      padding: 0.2rem 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .modules-grid { grid-template-columns: 1fr; }
+      .container { padding: 1rem 1rem 2.5rem; }
+      .modal-body { padding: 1.2rem; }
+      .modal-header h3 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <span class="badge"><i class="fas fa-book-open"></i> Son Cilt • Bütünleşik Sistem</span>
+    <h1>Anadolu Network</h1>
+    <div class="sub">Erdem + Bilim + Liyakat + Üretim + Tasarruf + Yatırım + Teknoloji + Adalet + Dayanışma</div>
+  </div>
+
+  <!-- Ana formül görseli -->
+  <div class="formula-wrapper">
+    <div class="equation">
+      <span class="term">Erdem</span><span class="plus">+</span>
+      <span class="term">Bilim</span><span class="plus">+</span>
+      <span class="term">Liyakat</span><span class="plus">+</span>
+      <span class="term">Üretim</span><span class="plus">+</span>
+      <span class="term">Tasarruf</span><span class="plus">+</span>
+      <span class="term">Yatırım</span><span class="plus">+</span>
+      <span class="term">Teknoloji</span><span class="plus">+</span>
+      <span class="term">Adalet</span><span class="plus">+</span>
+      <span class="term">Dayanışma</span>
+      <span class="equals">=</span>
+      <span class="result"><i class="fas fa-leaf"></i> Güçlü Toplum & Sürdürülebilir Kalkınma</span>
+    </div>
+    <div class="formula-note">
+      <i class="fas fa-chalkboard-user"></i> Dokuz temel değerin bileşkesi: adil, üreten, bilimle yönetilen ve dayanışmacı bir gelecek.
+    </div>
+  </div>
+
+  <!-- MODÜLLER (7 SON CİLT) -->
+  <div class="modules-header">
+    <h2><i class="fas fa-cubes"></i> Bütünleşik Modüller</h2>
+    <p>Anadolu Network Manifestosu, Anayasası, Yönetim Modeli, Ekonomi Modeli, FIRE Üniversitesi, Dijital Devlet Sistemi ve 100 Yıllık Master Plan — çalışan dijital ciltler</p>
+  </div>
+  <div id="modulesGrid" class="modules-grid">
+    <!-- Kartlar dinamik olarak JS ile doldurulacak -->
+  </div>
+
+  <div class="book-footer">
+    <span class="footnote"><i class="fas fa-globe"></i> Anadolu Network – Ana Formül & 7 Temel Cilt</span>
+    <span class="footnote"><i class="fas fa-chart-line"></i> Erdemliler Devleti Yönetim Modeli & Dijital Dönüşüm</span>
+    <span class="footnote"><i class="fas fa-hourglass-half"></i> 100 Yıllık Stratejik Master Plan ile Bütünleşir</span>
+  </div>
+</div>
+
+<!-- MODAL YAPISI -->
+<div id="moduleModal" class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h3 id="modalTitle">Modül Başlığı</h3>
+      <button class="close-modal" id="closeModalBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <p>Detaylı içerik yükleniyor...</p>
+    </div>
+    <div class="modal-footer">
+      <i class="fas fa-link"></i> Anadolu Network | Değer temelli kalkınma
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- MODÜL TANIMLARI (KART ve MODAL DETAYLARI) ----------
+  const modulesData = [
+    {
+      id: 1,
+      title: "Anadolu Network Manifestosu",
+      shortDesc: "Erdem, bilim ve liyakat temelinde toplumsal sözleşme; üretim ve dayanışma çağrısı.",
+      icon: "fas fa-scroll",
+      fullDesc: `<strong>📜 Anadolu Network Manifestosu</strong><br><br>
+      Bu manifesto, yeni yüzyılın toplumsal dönüşümünü temellendirir. <strong>Erdem, Bilim, Liyakat</strong> üçgeninde şekillenen bir toplum düzeni hedeflenir. Üretim ve tasarruf bilincini yaygınlaştırmak, yatırımı teşvik etmek, teknolojik dönüşümü adalet ve dayanışma ile birleştirmek esastır. Manifesto, her bireyin kalkınmanın öznesi olduğu, kamu yararının gözetildiği bir sosyal sözleşme niteliğindedir. <br><br>
+      “Hiçbir değer diğerinden bağımsız değildir: Erdem olmadan bilim yönünü şaşırır, adalet olmadan üretim anlamını yitirir.” — Anadolu Network İlkeleri.`
+    },
+    {
+      id: 2,
+      title: "Anadolu Network Anayasası",
+      shortDesc: "Dijital çağa uygun, katılımcı, şeffaf, liyakat esaslı toplumsal sözleşme.",
+      icon: "fas fa-gavel",
+      fullDesc: `<strong>⚖️ Anadolu Network Anayasası</strong><br><br>
+      Yönetişimde şeffaflık, hesap verebilirlik ve dijital haklar temel dayanaklardır. Anayasa, vatandaşlık bilincini güçlendiren, liyakate dayalı atamaları ve erdemlilik denetimini garanti eder. Yerel yönetimlerden merkezi dijital devlet sistemine kadar her katmanda adaleti sağlamayı amaçlar. Ayrıca, doğrudan katılım mekanizmaları (dijital oylama, kent konseyleri) Anayasa ile güvence altına alınır. Bu metin, “Güçlü Toplum” inşasının hukuki çerçevesidir.`
+    },
+    {
+      id: 3,
+      title: "Erdemliler Devleti Yönetim Modeli",
+      shortDesc: "Erdem temelli liderlik, etik kurullar, bilim ve liyakat odaklı atamalar.",
+      icon: "fas fa-landmark",
+      fullDesc: `<strong>🏛️ Erdemliler Devleti Yönetim Modeli</strong><br><br>
+      Liderlik seçimlerinde karakter, erdem ve kamu yararını önceleyen bir model. “Erdemli Kadrolar” enstitüsü; liyakat sınavları, etik denetim ve performans değerlendirmeleri ile işler. Yürütme erkinde, karar alma süreçlerine yapay zeka destekli etki analizleri ve bilim kurulları entegre edilmiştir. Bu model, bürokrasiyi azaltarak liyakat ve adaleti yüceltir. Devletin temel işlevi: fırsat eşitliği yaratmak, üretimi desteklemek ve dayanışmayı kurumsallaştırmaktır.`
+    },
+    {
+      id: 4,
+      title: "Anadolu Network Ekonomi Modeli",
+      shortDesc: "Yatırım, tasarruf, üretim, teknoloji dengesi; yerel kalkınma ve sürdürülebilirlik.",
+      icon: "fas fa-chart-pie",
+      fullDesc: `<strong>📈 Anadolu Network Ekonomi Modeli</strong><br><br>
+      Tasarruf ve yatırım dengesini temel alan bir ekosistem: yerel üretim teşvikleri, teknoloji tabanlı tarım, yeşil dönüşüm ve dijital ekonomi. Bu model, kaynak israfını önleyen döngüsel ekonomi prensipleri ile sürdürülebilir kalkınmayı hedefler. Aynı zamanda “Üreten Türkiye” vizyonuyla KOBİ’lerin finansmana erişimini kolaylaştırır. Ulusal tasarruf fonları ve teknoloji yatırım ortaklıkları, ekonomik bağımsızlığı güvence altına alır.`
+    },
+    {
+      id: 5,
+      title: "FIRE Üniversitesi",
+      shortDesc: "Fırsat, İnovasyon, Rekabet, Etik — araştırma üniversitesi modeli, girişimci beyinler.",
+      icon: "fas fa-university",
+      fullDesc: `<strong>🎓 FIRE Üniversitesi (Fırsat·İnovasyon·Rekabet·Etik)</strong><br><br>
+      Geleceğin liderlerini yetiştiren disiplinlerarası bir eğitim modelidir. Müfredatında yapay zeka, sürdürülebilirlik, etik kodlar ve girişimcilik zorunlu ders olarak bulunur. Öğrenciler “Erdemli Liderlik” programlarıyla donatılır; AR-GE projeleri doğrudan sanayi ve kamu ile iş birliği içinde yürütülür. FIRE Üniversiteleri, bilim üretimiyle toplumsal faydayı birleştirerek yerel ve küresel rekabet gücünü artırır. “Öğren, sorgula, üret ve dayanış” ilkesi temeldir.`
+    },
+    {
+      id: 6,
+      title: "Dijital Devlet Sistemi",
+      shortDesc: "Blokzincir kimlik, veri yönetişimi, katılımcı karar mekanizmaları, e-Devlet 4.0.",
+      icon: "fas fa-microchip",
+      fullDesc: `<strong>💻 Dijital Devlet Sistemi</strong><br><br>
+      Toplumun tüm hizmetlerine güvenli, şeffaf ve hızlı erişim sağlayan merkezi olmayan bir altyapı. Dijital cüzdan, e-imza, akıllı sözleşmeler ve blokzincir tabanlı oylama süreçleri bu sistemin omurgasını oluşturur. Vatandaşların karar alma süreçlerine doğrudan katılımını sağlayan “Dijital Demokrasi Platformu” ile şeffaflık ve adalet ilkesi somutlaşır. Ayrıca yapay zeka ile kamu hizmetleri kişiselleştirilirken, veri gizliliği anayasal güvence altındadır.`
+    },
+    {
+      id: 7,
+      title: "100 Yıllık Stratejik Master Plan",
+      shortDesc: "Nesiller arası adalet, sürdürülebilir kalkınma, uzun vadeli vizyon ve yol haritası.",
+      icon: "fas fa-chart-simple",
+      fullDesc: `<strong>🗺️ 100 Yıllık Stratejik Master Plan</strong><br><br>
+      Kuşaklar ötesi bir perspektif: 2100 yılına kadar karbon nötr hedefler, eğitimde fırsat eşitliği, teknolojik bağımsızlık ve bölgesel kalkınma koridorları. Plan, her on yılda bir güncellenen dinamik bir stratejik çerçevedir. Temel değerleri (Erdem, Bilim, Liyakat, Üretim, Teknoloji, Adalet…) somut projelere dönüştürür. Aynı zamanda ‘Sürdürülebilir Kalkınma Endeksi’ ile performans takibi yapılır. Bu master plan, Anadolu Network’ün yüzyıllık taahhüdüdür.`
+    }
+  ];
+
+  // Kartları render et
+  const gridContainer = document.getElementById('modulesGrid');
+
+  function renderCards() {
+    gridContainer.innerHTML = '';
+    modulesData.forEach(module => {
+      const card = document.createElement('div');
+      card.classList.add('module-card');
+      // data-id ile modülü tanımla
+      card.setAttribute('data-id', module.id);
+      card.innerHTML = `
+        <div class="card-icon"><i class="${module.icon}"></i></div>
+        <h3>${module.title}</h3>
+        <p>${module.shortDesc}</p>
+        <button class="btn-detail" data-id="${module.id}"><span>Detaylı İncele</span> <i class="fas fa-arrow-right"></i></button>
+      `;
+      gridContainer.appendChild(card);
+    });
+
+    // Butonlara olay dinleyicisi ekle
+    const detailBtns = document.querySelectorAll('.btn-detail');
+    detailBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = parseInt(btn.getAttribute('data-id'));
+        const module = modulesData.find(m => m.id === id);
+        if (module) openModal(module);
+      });
+    });
+
+    // Kartlara tıklama ile de modal açılabilir (isteğe bağlı)
+    const cards = document.querySelectorAll('.module-card');
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        // Eğer tıklanan buton değilse veya buton event'i propagate etmiş ama buton kendi işlemini yapacak yine de kart'tan tetikle
+        if (e.target.classList && e.target.classList.contains('btn-detail')) return;
+        const id = parseInt(card.getAttribute('data-id'));
+        const module = modulesData.find(m => m.id === id);
+        if (module) openModal(module);
+      });
+    });
+  }
+
+  // MODAL YÖNETİMİ
+  const modalOverlay = document.getElementById('moduleModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalBody = document.getElementById('modalBody');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+
+  function openModal(module) {
+    modalTitle.innerText = module.title;
+    modalBody.innerHTML = module.fullDesc;
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  closeModalBtn.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+      closeModal();
+    }
+  });
+
+  // Başlat
+  renderCards();
+
+  // Ek olarak formül alanına küçük animasyonlu vurgu
+  const terms = document.querySelectorAll('.term');
+  if (terms.length) {
+    setInterval(() => {
+      terms.forEach(term => {
+        term.style.transform = 'scale(1.01)';
+        setTimeout(() => { term.style.transform = 'scale(1)'; }, 200);
+      });
+    }, 3800);
+  }
+</script>
+</body>
+</html>
