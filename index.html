@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Anadolu Network | Ana Formül & Modüller | Yönetim Paneli</title>
+  <title>Anadolu Network | Ana Formül & Yönetim Paneli</title>
   <!-- Font Awesome 6 & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,23 +13,19 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(145deg, #0a2a44 0%, #0c2f4d 100%);
       color: #f5e7c8;
       line-height: 1.5;
     }
-
-    /* ana grid: sidebar + ana içerik */
     .app-grid {
       display: grid;
       grid-template-columns: 300px 1fr;
       gap: 0;
       min-height: 100vh;
     }
-
-    /* SIDEBAR (modüller) */
+    /* Sidebar */
     .sidebar {
       background: #071d33e6;
       backdrop-filter: blur(2px);
@@ -38,7 +34,6 @@
       overflow-y: auto;
       box-shadow: 4px 0 20px rgba(0,0,0,0.3);
     }
-
     .sidebar-header {
       display: flex;
       align-items: center;
@@ -50,60 +45,34 @@
       margin-bottom: 1.8rem;
       color: #f7d44a;
     }
-
-    .sidebar-header i {
-      font-size: 1.9rem;
-      color: #f5b83d;
-    }
-
     .modules-list {
       list-style: none;
       margin-top: 0.5rem;
     }
-
     .module-item {
       background: rgba(255,255,240,0.05);
       margin-bottom: 0.8rem;
       border-radius: 28px;
-      transition: all 0.2s;
-      cursor: pointer;
       padding: 0.7rem 1rem;
       display: flex;
       align-items: center;
       gap: 12px;
+      cursor: pointer;
       border: 1px solid transparent;
+      transition: 0.2s;
     }
-
-    .module-item i {
-      width: 28px;
-      font-size: 1.3rem;
-      color: #f5cd7a;
-    }
-
-    .module-item span {
-      font-weight: 500;
-      font-size: 0.95rem;
-      color: #faeec2;
-    }
-
-    .module-item:hover {
+    .module-item i { width: 28px; font-size: 1.3rem; color: #f5cd7a; }
+    .module-item span { font-weight: 500; font-size: 0.95rem; color: #faeec2; }
+    .module-item:hover, .module-item.active {
       background: #e4b36320;
       border-color: #f5cd7a;
       transform: translateX(5px);
     }
-
-    .module-item.active {
-      background: #f5cd7a20;
-      border-left: 4px solid #f5b83d;
-    }
-
-    /* ana içerik */
+    /* Main */
     .main-content {
       padding: 1.8rem 2rem 2rem;
       overflow-y: auto;
     }
-
-    /* başlık & formül */
     .formula-gold {
       background: rgba(0, 0, 0, 0.3);
       border-radius: 48px;
@@ -111,109 +80,62 @@
       margin-bottom: 2rem;
       text-align: center;
       border: 1px solid #f3cd7a80;
-      backdrop-filter: blur(4px);
     }
-
     .formula-title {
       font-size: 1.9rem;
       font-weight: 800;
       background: linear-gradient(135deg, #f9e0a0, #f5c542);
-      -webkit-background-clip: text;
       background-clip: text;
+      -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.8rem;
     }
-
     .equation-gold {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 0.5rem 1rem;
-      font-weight: 600;
-      color: #ffeaaf;
     }
-
     .term-gold {
       background: #1f3e5c;
       padding: 0.3rem 1rem;
       border-radius: 60px;
-      font-size: 0.9rem;
-      font-weight: 600;
       color: #ffdd99;
     }
-
     .result-gold {
       background: #f5b83d;
       color: #0a2a2f;
-      padding: 0.3rem 1.2rem;
       border-radius: 60px;
+      padding: 0.3rem 1.2rem;
       font-weight: 800;
     }
-
-    /* Paket kartları */
-    .packages-section {
-      margin: 2rem 0 2rem;
-    }
-
-    .section-head {
-      font-size: 1.7rem;
-      font-weight: 700;
-      border-left: 6px solid #f5b83d;
-      padding-left: 1rem;
-      margin-bottom: 1.5rem;
-      color: #ffe6b3;
-    }
-
-    .packages-grid {
+    /* packages */
+    .packages-grid, .listing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
+      margin: 1rem 0 2rem;
     }
-
-    .package-card {
+    .package-card, .item-card {
       background: #0e2a44cc;
       backdrop-filter: blur(10px);
       border-radius: 32px;
       padding: 1.3rem;
       border: 1px solid #f6cd7a60;
-      transition: all 0.2s;
     }
-
-    .package-card h3 {
-      font-size: 1.5rem;
-      color: #f5cd7a;
-    }
-
-    .price {
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin: 0.5rem 0;
-      color: #ffdfa5;
-    }
-
     .whatsapp-btn {
       background: #25D366;
       border: none;
-      padding: 0.6rem 1rem;
+      padding: 0.6rem;
       border-radius: 60px;
       font-weight: 600;
-      margin-top: 1rem;
       width: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      color: #0a2a2f;
       cursor: pointer;
-      transition: 0.2s;
+      margin-top: 1rem;
     }
-
-    .whatsapp-btn:hover {
-      background: #20b859;
-      transform: scale(0.98);
-    }
-
-    /* modül detay alanı */
     .module-detail {
       background: #062038aa;
       border-radius: 28px;
@@ -221,13 +143,41 @@
       margin: 1.8rem 0;
       border-left: 6px solid #f5b83d;
     }
-
-    .module-detail h4 {
-      font-size: 1.5rem;
-      color: #fad974;
+    /* Auth forms */
+    .auth-card {
+      background: #0f2c48dd;
+      border-radius: 28px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+      align-items: center;
     }
-
-    /* admin panel (giriş yapınca görünür) */
+    .auth-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+    .auth-form input {
+      background: #fef5e6;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 60px;
+      font-family: inherit;
+    }
+    .gold-btn, .logout-btn {
+      background: #f5b83d;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .logout-btn { background: #7f8c8d; color: white; }
+    /* admin panel */
     .admin-panel {
       margin-top: 2rem;
       background: #071a2be0;
@@ -236,412 +186,426 @@
       border: 1px solid #e4b363;
       display: none;
     }
-
-    .admin-panel.visible {
-      display: block;
-    }
-
+    .admin-panel.visible { display: block; }
     .admin-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.5rem;
     }
-
     .admin-card {
       background: #0a2138;
       padding: 1rem;
       border-radius: 24px;
     }
-
-    input, textarea, select {
-      background: #fef5e6;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 28px;
-      width: 100%;
-      margin-bottom: 8px;
-      font-family: inherit;
-    }
-
-    .gold-btn {
-      background: #f5b83d;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 40px;
-      font-weight: bold;
-      margin-top: 6px;
-      cursor: pointer;
-    }
-
-    .delete-btn {
-      background: #b34e3a;
-      color: white;
-      margin-left: 8px;
-    }
-
-    /* footer */
     .footer-info {
       margin-top: 2.5rem;
       background: #051b2bdd;
       border-radius: 28px;
-      padding: 1rem 1.5rem;
+      padding: 1rem;
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      align-items: center;
       font-size: 0.85rem;
-      border-top: 1px solid #f5c259;
     }
-
-    .footer-info a {
-      color: #ffd966;
-      text-decoration: none;
-    }
-
-    /* responsive */
+    .footer-info a { color: #ffd966; text-decoration: none; }
+    hr { border-color: #f5b83d30; margin: 12px 0; }
     @media (max-width: 780px) {
       .app-grid { grid-template-columns: 1fr; }
       .sidebar { border-right: none; border-bottom: 1px solid #f5b83d40; }
-      .admin-grid { grid-template-columns: 1fr; }
-    }
-
-    button, .module-item { cursor: pointer; }
-    .login-btn {
-      background: #f5b83d;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 30px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      float: right;
-    }
-    .logout-btn {
-      background: #6c757d;
     }
   </style>
 </head>
 <body>
 <div class="app-grid">
-  <!-- SIDEBAR: Modüller -->
+  <!-- SIDEBAR: MODÜLLER -->
   <aside class="sidebar">
     <div class="sidebar-header">
       <i class="fas fa-cubes"></i> <span>Anadolu Network</span>
     </div>
-    <div style="display: flex; justify-content: space-between; align-items:center;">
-      <h3 style="color:#f5cd7a; font-size:1rem;"><i class="fas fa-layer-group"></i> Anasayfa Modülleri</h3>
-    </div>
-    <ul id="modulesSidebarList" class="modules-list">
-      <!-- dinamik modüller js ile doldurulacak -->
-    </ul>
-    <div style="margin-top: 1.5rem; font-size:0.7rem; text-align:center; opacity:0.7;">
-      <i class="fas fa-shield-alt"></i> Erdem + Bilim + Liyakat
-    </div>
+    <div style="margin-bottom: 1rem; font-size:0.8rem; color:#f5cd7a;"><i class="fas fa-crown"></i> Kurucu: CFO.MÜH. Orhan BOYRAZ</div>
+    <ul id="modulesSidebarList" class="modules-list"></ul>
   </aside>
 
-  <!-- ANA İÇERİK -->
+  <!-- MAIN -->
   <main class="main-content">
-    <button id="adminLoginBtn" class="login-btn" style="float:right;"><i class="fas fa-lock"></i> Admin Girişi</button>
-    <div style="clear:both"></div>
+    <!-- Kullanıcı Giriş / Kayıt Kartı -->
+    <div id="authSection" class="auth-card">
+      <div id="userInfoArea" style="display:flex; gap:10px; align-items:center;">
+        <i class="fas fa-user-circle" style="font-size:1.6rem;"></i>
+        <span id="userGreeting">Ziyaretçi</span>
+      </div>
+      <div id="authForms" class="auth-form">
+        <input type="text" id="regName" placeholder="Ad Soyad">
+        <input type="email" id="regEmail" placeholder="E-posta">
+        <input type="password" id="regPassword" placeholder="Şifre">
+        <button id="registerBtn" class="gold-btn">Kayıt Ol</button>
+        <span style="margin:0 5px;">|</span>
+        <input type="email" id="loginEmail" placeholder="E-posta">
+        <input type="password" id="loginPassword" placeholder="Şifre">
+        <button id="loginBtn" class="gold-btn">Giriş</button>
+        <button id="logoutBtn" class="logout-btn" style="display:none;">Çıkış</button>
+      </div>
+    </div>
 
+    <!-- ANA FORMÜL -->
     <div class="formula-gold">
       <div class="formula-title">ANADOLU NETWORK ANASAYFA</div>
       <div class="equation-gold">
-        <span class="term-gold">Erdem</span> <span>+</span>
-        <span class="term-gold">Bilim</span> <span>+</span>
-        <span class="term-gold">Liyakat</span> <span>+</span>
-        <span class="term-gold">Üretim</span> <span>+</span>
-        <span class="term-gold">Tasarruf</span> <span>+</span>
-        <span class="term-gold">Yatırım</span> <span>+</span>
-        <span class="term-gold">Teknoloji</span> <span>+</span>
-        <span class="term-gold">Adalet</span> <span>+</span>
+        <span class="term-gold">Erdem</span> <span>+</span> <span class="term-gold">Bilim</span> <span>+</span>
+        <span class="term-gold">Liyakat</span> <span>+</span> <span class="term-gold">Üretim</span> <span>+</span>
+        <span class="term-gold">Tasarruf</span> <span>+</span> <span class="term-gold">Yatırım</span> <span>+</span>
+        <span class="term-gold">Teknoloji</span> <span>+</span> <span class="term-gold">Adalet</span> <span>+</span>
         <span class="term-gold">Dayanışma</span>
         <span class="result-gold">= Güçlü Toplum & Sürdürülebilir Kalkınma</span>
       </div>
     </div>
 
-    <!-- 4 PAKET BÖLÜMÜ -->
+    <!-- PAKETLER -->
     <div class="packages-section">
-      <div class="section-head"><i class="fas fa-gem"></i> Hizmet Paketleri</div>
-      <div id="packagesContainer" class="packages-grid">
-        <!-- dinamik paketler -->
-      </div>
+      <h2 style="border-left:6px solid #f5b83d; padding-left:1rem;"><i class="fas fa-gem"></i> Hizmet Paketleri (WhatsApp ile Satın Al)</h2>
+      <div id="packagesContainer" class="packages-grid"></div>
     </div>
 
-    <!-- MODÜL DETAY GÖSTERİM ALANI -->
+    <!-- ÜRÜNLER / HİZMETLER / ABONELİK LİSTELERİ -->
+    <h2 style="border-left:6px solid #f5b83d; padding-left:1rem; margin-top:1rem;"><i class="fas fa-box"></i> Ürünler</h2>
+    <div id="productsList" class="listing-grid"></div>
+
+    <h2 style="border-left:6px solid #f5b83d; padding-left:1rem;"><i class="fas fa-concierge-bell"></i> Hizmetler</h2>
+    <div id="servicesList" class="listing-grid"></div>
+
+    <h2 style="border-left:6px solid #f5b83d; padding-left:1rem;"><i class="fas fa-calendar-alt"></i> Abonelik Planları</h2>
+    <div id="subscriptionsList" class="listing-grid"></div>
+
+    <!-- Modül detay -->
     <div id="moduleDetailArea" class="module-detail">
       <h4><i class="fas fa-info-circle"></i> Modül Detayı</h4>
-      <p id="moduleDetailText">Bir modül seçmek için sağdaki listeden tıklayın.</p>
+      <p id="moduleDetailText">Soldan bir modül seçin.</p>
     </div>
 
-    <!-- YÖNETİM PANELİ (giriş yapınca görünür) -->
+    <!-- YÖNETİM PANELİ (SADECE ADMIN) -->
     <div id="adminPanel" class="admin-panel">
-      <h3 style="color:#f5cd7a;"><i class="fas fa-user-shield"></i> Yönetim Paneli (Ekle / Sil)</h3>
+      <h3><i class="fas fa-user-shield"></i> Yönetim Paneli (Ürün / Hizmet / Abonelik)</h3>
       <div class="admin-grid">
+        <!-- Ürün Yönetimi -->
         <div class="admin-card">
-          <h4><i class="fas fa-book"></i> Modül Yönetimi</h4>
-          <div id="adminModulesList"></div>
-          <hr style="margin: 12px 0; border-color:#f5b83d30;">
-          <input type="text" id="newModuleTitle" placeholder="Modül Adı">
-          <textarea id="newModuleShort" rows="2" placeholder="Kısa açıklama"></textarea>
-          <textarea id="newModuleFull" rows="3" placeholder="Detaylı açıklama"></textarea>
-          <input type="text" id="newModuleIcon" placeholder="icon class (fas fa-scroll)">
-          <button id="addModuleBtn" class="gold-btn"><i class="fas fa-plus"></i> Modül Ekle</button>
+          <h4><i class="fas fa-cube"></i> Ürünler</h4>
+          <div id="adminProductsList"></div>
+          <input type="text" id="newProductName" placeholder="Ürün adı">
+          <textarea id="newProductDesc" rows="2" placeholder="Açıklama"></textarea>
+          <input type="text" id="newProductPrice" placeholder="Fiyat (Örn: 499 TL)">
+          <button id="addProductBtn" class="gold-btn">Ürün Ekle</button>
         </div>
+        <!-- Hizmet Yönetimi -->
         <div class="admin-card">
-          <h4><i class="fas fa-boxes"></i> Paket Yönetimi</h4>
-          <div id="adminPackagesList"></div>
-          <hr style="margin: 12px 0;">
-          <input type="text" id="newPackageName" placeholder="Paket adı">
-          <input type="text" id="newPackagePrice" placeholder="Fiyat (Ücretsiz / 499 TL)">
-          <textarea id="newPackageDesc" rows="2" placeholder="Paket özellikleri"></textarea>
-          <button id="addPackageBtn" class="gold-btn"><i class="fas fa-plus"></i> Paket Ekle</button>
-          <p style="font-size:12px; margin-top:8px;">* Başlangıç paketi ücretsiz olarak ön tanımlıdır.</p>
+          <h4><i class="fas fa-hand-sparkles"></i> Hizmetler</h4>
+          <div id="adminServicesList"></div>
+          <input type="text" id="newServiceName" placeholder="Hizmet adı">
+          <textarea id="newServiceDesc" rows="2" placeholder="Açıklama"></textarea>
+          <input type="text" id="newServicePrice" placeholder="Fiyat">
+          <button id="addServiceBtn" class="gold-btn">Hizmet Ekle</button>
+        </div>
+        <!-- Abonelik Yönetimi -->
+        <div class="admin-card">
+          <h4><i class="fas fa-clock"></i> Abonelikler</h4>
+          <div id="adminSubsList"></div>
+          <input type="text" id="newSubName" placeholder="Abonelik adı">
+          <textarea id="newSubDesc" rows="2" placeholder="Özellikler"></textarea>
+          <input type="text" id="newSubPrice" placeholder="Fiyat / Dönem">
+          <button id="addSubBtn" class="gold-btn">Abonelik Ekle</button>
         </div>
       </div>
-      <button id="logoutAdminBtn" class="gold-btn logout-btn" style="background:#7f8c8d; margin-top:1rem;"><i class="fas fa-sign-out-alt"></i> Çıkış Yap</button>
+      <button id="logoutAdminBtn" class="logout-btn" style="margin-top:1rem;">Yönetimden Çıkış</button>
     </div>
 
-    <!-- FOOTER BİLGİLER -->
+    <!-- Footer -->
     <div class="footer-info">
-      <span><i class="fas fa-phone-alt"></i> .tel: 0540 966 6602</span>
-      <span><i class="fas fa-globe"></i> web: <a href="http://anadolunetwork.tr/" target="_blank">anadolunetwork.tr</a></span>
-      <span><i class="fas fa-envelope"></i> mail: orhanboyraz0216@gmail.com</span>
+      <span><i class="fas fa-phone-alt"></i> .Tel: 0540 966 6602</span>
+      <span><i class="fas fa-globe"></i> Websitem: <a href="https://anadolunetwork.tr/" target="_blank">anadolunetwork.tr</a></span>
+      <span><i class="fas fa-envelope"></i> Mail: orhanboyraz0216@gmail.com</span>
+      <span><i class="fas fa-user-tie"></i> Kurucu: CFO.MÜH. Orhan BOYRAZ</span>
     </div>
   </main>
 </div>
 
 <script>
-  // ----------------------------- BAŞLANGIÇ VERİLERİ -------------------------
-  // Modüller (7 ana modül + yönetim ile değişebilir)
+  // ---------- VERİ YAPILARI ----------
   let modules = [
-    { id: "mod1", title: "Anadolu Network Manifestosu", shortDesc: "Erdem, bilim ve liyakat temelinde toplumsal sözleşme.", fullDesc: "📜 Anadolu Network Manifestosu: Yeni yüzyılın toplumsal dönüşümü, üretim ve dayanışma odaklı. Erdem, bilim ve liyakat üçgeninde adil bir düzen.", iconClass: "fas fa-scroll" },
-    { id: "mod2", title: "Anadolu Network Anayasası", shortDesc: "Dijital çağa uygun, katılımcı, şeffaf sözleşme.", fullDesc: "⚖️ Anayasa: Dijital haklar, liyakat esaslı atamalar ve katılımcı mekanizmalar. Güçlü toplum için hukuki çerçeve.", iconClass: "fas fa-gavel" },
-    { id: "mod3", title: "Erdemliler Devleti Yönetim Modeli", shortDesc: "Erdem temelli liderlik, etik kurullar.", fullDesc: "🏛️ Erdemliler Devleti: Liyakat sınavları, etik denetim ve bilim kurulları. Devletin temel işlevi fırsat eşitliği.", iconClass: "fas fa-landmark" },
-    { id: "mod4", title: "Anadolu Network Ekonomi Modeli", shortDesc: "Yatırım, tasarruf, üretim dengesi.", fullDesc: "📈 Yerel üretim, yeşil dönüşüm, tasarruf fonları ve dijital ekonomi. Sürdürülebilir kalkınma için yatırım odaklı model.", iconClass: "fas fa-chart-pie" },
-    { id: "mod5", title: "FIRE Üniversitesi", shortDesc: "Fırsat, İnovasyon, Rekabet, Etik.", fullDesc: "🎓 Disiplinlerarası eğitim, girişimcilik ve yapay zeka odaklı. Etik liderlik programlarıyla geleceğin kurucuları.", iconClass: "fas fa-university" },
-    { id: "mod6", title: "Dijital Devlet Sistemi", shortDesc: "Blokzincir kimlik, e-Devlet 4.0.", fullDesc: "💻 Dijital cüzdan, akıllı sözleşmeler, katılımcı karar mekanizmaları. Şeffaf ve güvenli yönetişim.", iconClass: "fas fa-microchip" },
-    { id: "mod7", title: "100 Yıllık Stratejik Master Plan", shortDesc: "Nesiller arası adalet, uzun vadeli vizyon.", fullDesc: "🗺️ 2100 vizyonu: karbon nötrlük, teknolojik bağımsızlık ve bölgesel kalkınma. Dinamik stratejik çerçeve.", iconClass: "fas fa-chart-simple" }
+    { id: "mod1", title: "Anadolu Network Manifestosu", shortDesc: "Erdem, bilim ve liyakat temelinde toplumsal sözleşme.", fullDesc: "📜 Manifesto: Yeni yüzyılın toplumsal dönüşümü, üretim ve dayanışma odaklı. Erdem, bilim ve liyakat üçgeninde adil bir düzen.", iconClass: "fas fa-scroll" },
+    { id: "mod2", title: "Anadolu Network Anayasası", shortDesc: "Dijital çağa uygun, katılımcı, şeffaf sözleşme.", fullDesc: "⚖️ Anayasa: Dijital haklar, liyakat esaslı atamalar ve katılımcı mekanizmalar.", iconClass: "fas fa-gavel" },
+    { id: "mod3", title: "Erdemliler Devleti Yönetim Modeli", shortDesc: "Erdem temelli liderlik, etik kurullar.", fullDesc: "🏛️ Erdemliler Devleti: Liyakat sınavları, etik denetim ve bilim kurulları.", iconClass: "fas fa-landmark" },
+    { id: "mod4", title: "Anadolu Network Ekonomi Modeli", shortDesc: "Yatırım, tasarruf, üretim dengesi.", fullDesc: "📈 Yerel üretim, yeşil dönüşüm, tasarruf fonları.", iconClass: "fas fa-chart-pie" },
+    { id: "mod5", title: "FIRE Üniversitesi", shortDesc: "Fırsat, İnovasyon, Rekabet, Etik.", fullDesc: "🎓 Disiplinlerarası eğitim, girişimcilik ve yapay zeka odaklı.", iconClass: "fas fa-university" },
+    { id: "mod6", title: "Dijital Devlet Sistemi", shortDesc: "Blokzincir kimlik, e-Devlet 4.0.", fullDesc: "💻 Dijital cüzdan, akıllı sözleşmeler, katılımcı karar mekanizmaları.", iconClass: "fas fa-microchip" },
+    { id: "mod7", title: "100 Yıllık Stratejik Master Plan", shortDesc: "Nesiller arası adalet, uzun vadeli vizyon.", fullDesc: "🗺️ 2100 vizyonu: karbon nötrlük, teknolojik bağımsızlık.", iconClass: "fas fa-chart-simple" }
   ];
-
-  // Paketler (4 paket, başlangıç ücretsiz)
+  
   let packages = [
-    { id: "p1", name: "Başlangıç Paketi", price: "Ücretsiz", description: "Temel eğitim içerikleri, topluluk erişimi, haber bülteni ve başlangıç rehberi." },
-    { id: "p2", name: "Gelişmiş Paket", price: "1.499 TL", description: "İleri düzey atölyeler, mentörlük, üretim rehberleri ve aylık seminerler." },
-    { id: "p3", name: "Pro Paket", price: "2.999 TL", description: "Özel yatırım stratejileri, teknoloji raporları, danışmanlık ve network etkinlikleri." },
-    { id: "p4", name: "Kurumsal Paket", price: "Özel fiyat", description: "Kurumsal çözümler, dijital dönüşüm desteği, marka iş birlikleri ve eğitim paketleri." }
+    { id: "p1", name: "Ortak Paketi", price: "Ücretsiz", description: "Temel eğitim içerikleri, topluluk erişimi." },
+    { id: "p2", name: "Pro Paket", price: "1.499 TL", description: "İleri düzey atölyeler, mentörlük." },
+    { id: "p3", name: "VIP Paket", price: "2.999 TL", description: "Özel yatırım stratejileri, danışmanlık." },
+    { id: "p4", name: "Kurumsal Paket", price: "Özel fiyat", description: "Dijital dönüşüm desteği, marka iş birlikleri." }
   ];
 
-  let loggedIn = false; // session kontrolü
+  let products = [];      // { id, name, desc, price }
+  let services = [];
+  let subscriptions = [];
 
-  // LocalStorage yükleme
+  let users = [];         // { id, name, email, password, isAdmin }
+  let currentUser = null;
+
+  // localStorage yükleme
   function loadData() {
     const storedModules = localStorage.getItem("anadolu_modules");
-    const storedPackages = localStorage.getItem("anadolu_packages");
     if (storedModules) modules = JSON.parse(storedModules);
+    const storedPackages = localStorage.getItem("anadolu_packages");
     if (storedPackages) packages = JSON.parse(storedPackages);
-    // eğer paketlerde başlangıç ücretsiz yoksa ama listede var, kontrol ekstradan
-    if (!packages.some(p => p.name === "Başlangıç Paketi" && p.price === "Ücretsiz")) {
-      // önlem: amaç 4 paket olması, ekleyelim
-      if (packages.length === 0) packages = [...packages];
+    
+    const storedProducts = localStorage.getItem("anadolu_products");
+    if (storedProducts) products = JSON.parse(storedProducts);
+    const storedServices = localStorage.getItem("anadolu_services");
+    if (storedServices) services = JSON.parse(storedServices);
+    const storedSubs = localStorage.getItem("anadolu_subscriptions");
+    if (storedSubs) subscriptions = JSON.parse(storedSubs);
+    
+    const storedUsers = localStorage.getItem("anadolu_users");
+    if (storedUsers) users = JSON.parse(storedUsers);
+    else {
+      // varsayılan admin oluştur (ilk kayıt olacak)
+      users = [];
     }
+    // giriş kontrolü session
+    const savedUser = sessionStorage.getItem("anadolu_current_user");
+    if (savedUser) currentUser = JSON.parse(savedUser);
   }
-
   function saveModules() { localStorage.setItem("anadolu_modules", JSON.stringify(modules)); }
   function savePackages() { localStorage.setItem("anadolu_packages", JSON.stringify(packages)); }
+  function saveProducts() { localStorage.setItem("anadolu_products", JSON.stringify(products)); renderProductLists(); renderAdminProductList(); }
+  function saveServices() { localStorage.setItem("anadolu_services", JSON.stringify(services)); renderServiceLists(); renderAdminServiceList(); }
+  function saveSubscriptions() { localStorage.setItem("anadolu_subscriptions", JSON.stringify(subscriptions)); renderSubscriptionLists(); renderAdminSubList(); }
+  function saveUsers() { localStorage.setItem("anadolu_users", JSON.stringify(users)); }
 
-  // ----- RENDER SIDEBAR MODÜLLERİ -----
-  function renderSidebarModules(activeModuleId = null) {
+  // ---------- RENDER FUNCTIONS ----------
+  function renderSidebarModules() {
     const container = document.getElementById("modulesSidebarList");
-    if (!container) return;
     container.innerHTML = "";
     modules.forEach(mod => {
       const li = document.createElement("li");
       li.className = "module-item";
-      if (activeModuleId === mod.id) li.classList.add("active");
       li.innerHTML = `<i class="${mod.iconClass}"></i><span>${mod.title}</span>`;
-      li.addEventListener("click", () => {
-        showModuleDetail(mod);
-        // aktif görünüm
-        document.querySelectorAll(".module-item").forEach(item => item.classList.remove("active"));
+      li.onclick = () => {
+        document.getElementById("moduleDetailText").innerHTML = `<strong><i class="${mod.iconClass}"></i> ${mod.title}</strong><br>${mod.fullDesc || mod.shortDesc}`;
+        document.querySelectorAll(".module-item").forEach(i => i.classList.remove("active"));
         li.classList.add("active");
-      });
+      };
       container.appendChild(li);
     });
-    // eğer hiç modül yoksa mesaj
-    if (modules.length === 0) container.innerHTML = '<li style="color:#ffcc88">Henüz modül yok, admin panelden ekleyin.</li>';
+    if(modules.length>0) document.querySelector(".module-item")?.click();
   }
 
-  function showModuleDetail(module) {
-    const detailDiv = document.getElementById("moduleDetailText");
-    if (detailDiv) {
-      detailDiv.innerHTML = `<strong><i class="${module.iconClass}"></i> ${module.title}</strong><br>${module.fullDesc || module.shortDesc}`;
-    }
-  }
-
-  // paket render (whatsapp ile)
   function renderPackages() {
     const container = document.getElementById("packagesContainer");
-    if (!container) return;
     container.innerHTML = "";
     packages.forEach(pkg => {
-      const card = document.createElement("div");
-      card.className = "package-card";
-      const priceText = pkg.price;
-      card.innerHTML = `
+      const div = document.createElement("div");
+      div.className = "package-card";
+      div.innerHTML = `
         <h3>${pkg.name}</h3>
-        <div class="price">${priceText}</div>
-        <p style="font-size:0.85rem; margin: 8px 0;">${pkg.description}</p>
-        <button class="whatsapp-btn" data-package="${pkg.name}" data-price="${priceText}">
-          <i class="fab fa-whatsapp"></i> WhatsApp ile Satın Al / İletişim
-        </button>
+        <div class="price" style="font-size:1.5rem; font-weight:bold;">${pkg.price}</div>
+        <p>${pkg.description}</p>
+        <button class="whatsapp-btn" data-pkg="${pkg.name}" data-price="${pkg.price}"><i class="fab fa-whatsapp"></i> WhatsApp ile Satın Al</button>
       `;
-      container.appendChild(card);
+      container.appendChild(div);
     });
-    // WhatsApp eventleri
     document.querySelectorAll(".whatsapp-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const packageName = btn.getAttribute("data-package");
-        const price = btn.getAttribute("data-price");
-        const message = `Merhaba, ${packageName} (${price}) hakkında bilgi almak ve satın almak istiyorum. Anadolu Network gücüyle.`;
-        const encoded = encodeURIComponent(message);
-        const phone = "905409666602"; // uluslararası format 05409666602 => 905409666602
-        window.open(`https://wa.me/${phone}?text=${encoded}`, "_blank");
-      });
-    });
-  }
-
-  // Admin panellerini render (modül listesi + silme butonları, paket listesi + silme)
-  function renderAdminLists() {
-    const adminModulesDiv = document.getElementById("adminModulesList");
-    const adminPackagesDiv = document.getElementById("adminPackagesList");
-    if (!adminModulesDiv || !adminPackagesDiv) return;
-
-    adminModulesDiv.innerHTML = "<strong>Mevcut Modüller:</strong><br>";
-    modules.forEach(mod => {
-      const div = document.createElement("div");
-      div.style.display = "flex"; div.style.justifyContent = "space-between"; div.style.marginBottom = "6px";
-      div.innerHTML = `<span>${mod.title}</span><button class="delete-module-btn gold-btn delete-btn" data-id="${mod.id}">Sil</button>`;
-      adminModulesDiv.appendChild(div);
-    });
-    document.querySelectorAll(".delete-module-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        const id = btn.getAttribute("data-id");
-        modules = modules.filter(m => m.id !== id);
-        saveModules();
-        fullRender();
-        renderAdminLists();
-      });
-    });
-
-    adminPackagesDiv.innerHTML = "<strong>Mevcut Paketler:</strong><br>";
-    packages.forEach(pkg => {
-      const div = document.createElement("div");
-      div.style.display = "flex"; div.style.justifyContent = "space-between"; div.style.marginBottom = "6px";
-      div.innerHTML = `<span>${pkg.name} (${pkg.price})</span><button class="delete-package-btn gold-btn delete-btn" data-pid="${pkg.id}">Sil</button>`;
-      adminPackagesDiv.appendChild(div);
-    });
-    document.querySelectorAll(".delete-package-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        const pid = btn.getAttribute("data-pid");
-        packages = packages.filter(p => p.id !== pid);
-        savePackages();
-        fullRender();
-        renderAdminLists();
+        const pName = btn.getAttribute("data-pkg");
+        const price = btn.getAttribute("data-price");
+        const msg = encodeURIComponent(`Merhaba, ${pName} (${price}) hakkında bilgi almak ve satın almak istiyorum. Anadolu Network.`);
+        window.open(`https://wa.me/905409666602?text=${msg}`, "_blank");
       });
     });
   }
 
-  // ekleme işlemleri
-  function setupAdminActions() {
-    // modül ekle
-    const addModBtn = document.getElementById("addModuleBtn");
-    if (addModBtn) {
-      addModBtn.onclick = () => {
-        const title = document.getElementById("newModuleTitle").value.trim();
-        const short = document.getElementById("newModuleShort").value.trim();
-        const full = document.getElementById("newModuleFull").value.trim();
-        let icon = document.getElementById("newModuleIcon").value.trim();
-        if (!title) return alert("Modül adı gerekli");
-        if (!icon) icon = "fas fa-cube";
-        const newId = "mod_" + Date.now();
-        modules.push({ id: newId, title, shortDesc: short || title, fullDesc: full || short || title, iconClass: icon });
-        saveModules();
-        fullRender();
-        renderAdminLists();
-        document.getElementById("newModuleTitle").value = "";
-        document.getElementById("newModuleShort").value = "";
-        document.getElementById("newModuleFull").value = "";
-        document.getElementById("newModuleIcon").value = "";
-      };
-    }
-    const addPkgBtn = document.getElementById("addPackageBtn");
-    if (addPkgBtn) {
-      addPkgBtn.onclick = () => {
-        const name = document.getElementById("newPackageName").value.trim();
-        const price = document.getElementById("newPackagePrice").value.trim();
-        const desc = document.getElementById("newPackageDesc").value.trim();
-        if (!name) return alert("Paket adı gerekli");
-        const newId = "pkg_" + Date.now();
-        packages.push({ id: newId, name, price: price || "Ücretlendirilecek", description: desc || "Yeni paket" });
-        savePackages();
-        fullRender();
-        renderAdminLists();
-        document.getElementById("newPackageName").value = "";
-        document.getElementById("newPackagePrice").value = "";
-        document.getElementById("newPackageDesc").value = "";
-      };
-    }
+  function renderProductLists() {
+    const container = document.getElementById("productsList");
+    if(!container) return;
+    container.innerHTML = products.length ? products.map(p => `
+      <div class="item-card"><h4>${p.name}</h4><p>${p.desc || ""}</p><strong>${p.price || "Fiyat sorunuz"}</strong></div>
+    `).join('') : "<p>Henüz ürün eklenmemiş.</p>";
+  }
+  function renderServiceLists() {
+    const container = document.getElementById("servicesList");
+    container.innerHTML = services.length ? services.map(s => `
+      <div class="item-card"><h4>${s.name}</h4><p>${s.desc || ""}</p><strong>${s.price || "Fiyat sorunuz"}</strong></div>
+    `).join('') : "<p>Henüz hizmet eklenmemiş.</p>";
+  }
+  function renderSubscriptionLists() {
+    const container = document.getElementById("subscriptionsList");
+    container.innerHTML = subscriptions.length ? subscriptions.map(sub => `
+      <div class="item-card"><h4>${sub.name}</h4><p>${sub.desc || ""}</p><strong>${sub.price || "Dönemlik ücret"}</strong></div>
+    `).join('') : "<p>Henüz abonelik planı yok.</p>";
   }
 
-  // full render tüm UI
-  function fullRender(activeModule = null) {
-    renderSidebarModules(activeModule ? activeModule.id : null);
-    renderPackages();
-    if (loggedIn) {
-      document.getElementById("adminPanel").classList.add("visible");
-      renderAdminLists();
-      setupAdminActions();
+  // Admin listeleme (sil butonlu)
+  function renderAdminProductList() {
+    const div = document.getElementById("adminProductsList");
+    if(!div) return;
+    div.innerHTML = "<strong>Mevcut Ürünler:</strong><br>";
+    products.forEach(prod => {
+      div.innerHTML += `<div style="display:flex; justify-content:space-between;"><span>${prod.name}</span><button class="delete-item gold-btn delete-btn" data-type="product" data-id="${prod.id}">Sil</button></div>`;
+    });
+    attachDeleteEvents();
+  }
+  function renderAdminServiceList() {
+    const div = document.getElementById("adminServicesList");
+    if(!div) return;
+    div.innerHTML = "<strong>Mevcut Hizmetler:</strong><br>";
+    services.forEach(serv => {
+      div.innerHTML += `<div style="display:flex; justify-content:space-between;"><span>${serv.name}</span><button class="delete-item gold-btn delete-btn" data-type="service" data-id="${serv.id}">Sil</button></div>`;
+    });
+    attachDeleteEvents();
+  }
+  function renderAdminSubList() {
+    const div = document.getElementById("adminSubsList");
+    if(!div) return;
+    div.innerHTML = "<strong>Mevcut Abonelikler:</strong><br>";
+    subscriptions.forEach(sub => {
+      div.innerHTML += `<div style="display:flex; justify-content:space-between;"><span>${sub.name}</span><button class="delete-item gold-btn delete-btn" data-type="subscription" data-id="${sub.id}">Sil</button></div>`;
+    });
+    attachDeleteEvents();
+  }
+  function attachDeleteEvents() {
+    document.querySelectorAll(".delete-item").forEach(btn => {
+      btn.removeEventListener("click", handleDelete);
+      btn.addEventListener("click", handleDelete);
+    });
+  }
+  function handleDelete(e) {
+    const type = e.currentTarget.getAttribute("data-type");
+    const id = e.currentTarget.getAttribute("data-id");
+    if(type === "product") products = products.filter(p => p.id != id);
+    if(type === "service") services = services.filter(s => s.id != id);
+    if(type === "subscription") subscriptions = subscriptions.filter(sub => sub.id != id);
+    saveProducts(); saveServices(); saveSubscriptions();
+    renderAdminProductList(); renderAdminServiceList(); renderAdminSubList();
+    renderProductLists(); renderServiceLists(); renderSubscriptionLists();
+  }
+
+  // Admin ekleme işlemleri
+  function setupAdminCrud() {
+    document.getElementById("addProductBtn").onclick = () => {
+      const name = document.getElementById("newProductName").value.trim();
+      if(!name) return alert("Ürün adı girin");
+      products.push({ id: Date.now()+"_prod", name, desc: document.getElementById("newProductDesc").value, price: document.getElementById("newProductPrice").value });
+      saveProducts();
+      document.getElementById("newProductName").value = "";
+      document.getElementById("newProductDesc").value = "";
+      document.getElementById("newProductPrice").value = "";
+      renderAdminProductList(); renderProductLists();
+    };
+    document.getElementById("addServiceBtn").onclick = () => {
+      const name = document.getElementById("newServiceName").value.trim();
+      if(!name) return alert("Hizmet adı girin");
+      services.push({ id: Date.now()+"_serv", name, desc: document.getElementById("newServiceDesc").value, price: document.getElementById("newServicePrice").value });
+      saveServices();
+      document.getElementById("newServiceName").value = "";
+      document.getElementById("newServiceDesc").value = "";
+      document.getElementById("newServicePrice").value = "";
+      renderAdminServiceList(); renderServiceLists();
+    };
+    document.getElementById("addSubBtn").onclick = () => {
+      const name = document.getElementById("newSubName").value.trim();
+      if(!name) return alert("Abonelik adı girin");
+      subscriptions.push({ id: Date.now()+"_sub", name, desc: document.getElementById("newSubDesc").value, price: document.getElementById("newSubPrice").value });
+      saveSubscriptions();
+      document.getElementById("newSubName").value = "";
+      document.getElementById("newSubDesc").value = "";
+      document.getElementById("newSubPrice").value = "";
+      renderAdminSubList(); renderSubscriptionLists();
+    };
+  }
+
+  // AUTHENTICATION
+  function updateUIBasedOnAuth() {
+    const isLogged = currentUser !== null;
+    const isAdmin = currentUser?.isAdmin === true;
+    document.getElementById("registerBtn").style.display = isLogged ? "none" : "inline-block";
+    document.getElementById("loginBtn").style.display = isLogged ? "none" : "inline-block";
+    document.getElementById("logoutBtn").style.display = isLogged ? "inline-block" : "none";
+    document.getElementById("regName").disabled = isLogged;
+    document.getElementById("regEmail").disabled = isLogged;
+    document.getElementById("regPassword").disabled = isLogged;
+    document.getElementById("loginEmail").disabled = isLogged;
+    document.getElementById("loginPassword").disabled = isLogged;
+    if(isLogged) {
+      document.getElementById("userGreeting").innerHTML = `<strong>${currentUser.name}</strong> (${currentUser.isAdmin ? "Admin" : "Üye"})`;
+      document.getElementById("authForms").style.opacity = "0.6";
     } else {
-      document.getElementById("adminPanel").classList.remove("visible");
+      document.getElementById("userGreeting").innerHTML = "Ziyaretçi - Giriş Yapın";
+      document.getElementById("authForms").style.opacity = "1";
     }
-    // ilk modülü seçili yap
-    if (modules.length > 0 && !activeModule) {
-      showModuleDetail(modules[0]);
-      const firstItem = document.querySelector(".module-item");
-      if (firstItem) firstItem.classList.add("active");
-    } else if (activeModule) {
-      showModuleDetail(activeModule);
-    }
+    // admin panel görünürlüğü
+    const adminPanel = document.getElementById("adminPanel");
+    if(isAdmin && isLogged) adminPanel.classList.add("visible");
+    else adminPanel.classList.remove("visible");
   }
 
-  // ----- GİRİŞ / ÇIKIŞ -----
-  function initLogin() {
-    const loginBtn = document.getElementById("adminLoginBtn");
-    const logoutBtn = document.getElementById("logoutAdminBtn");
-    loginBtn.onclick = () => {
-      const pwd = prompt("Admin şifresini giriniz:");
-      if (pwd === "anadolu2026") {
-        loggedIn = true;
-        fullRender();
-      } else {
-        alert("Şifre hatalı!");
-      }
-    };
-    logoutBtn.onclick = () => {
-      loggedIn = false;
-      fullRender();
-    };
-    // session için eğer refresh'te kalması istenmez, giriş state sıfırlanır, güvenlik açısından normal.
-    // Admin panel gizli kalır.
+  function register() {
+    const name = document.getElementById("regName").value.trim();
+    const email = document.getElementById("regEmail").value.trim();
+    const pwd = document.getElementById("regPassword").value.trim();
+    if(!name || !email || !pwd) return alert("Tüm alanları doldurun");
+    if(users.find(u=>u.email === email)) return alert("Bu email zaten kayıtlı");
+    const isAdmin = users.length === 0 ? true : false; // ilk kullanıcı admin
+    const newUser = { id: Date.now(), name, email, password: pwd, isAdmin };
+    users.push(newUser);
+    saveUsers();
+    alert(isAdmin ? "Admin hesabı oluşturuldu. Giriş yapın." : "Kayıt başarılı, giriş yapın.");
+    document.getElementById("regName").value = "";
+    document.getElementById("regEmail").value = "";
+    document.getElementById("regPassword").value = "";
+  }
+  function login() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const pwd = document.getElementById("loginPassword").value.trim();
+    const user = users.find(u=>u.email === email && u.password === pwd);
+    if(!user) return alert("Hatalı email veya şifre");
+    currentUser = user;
+    sessionStorage.setItem("anadolu_current_user", JSON.stringify(user));
+    updateUIBasedOnAuth();
+    document.getElementById("loginEmail").value = "";
+    document.getElementById("loginPassword").value = "";
+    renderAdminProductList(); renderAdminServiceList(); renderAdminSubList(); setupAdminCrud(); // yeniden ayarla
+  }
+  function logout() {
+    currentUser = null;
+    sessionStorage.removeItem("anadolu_current_user");
+    updateUIBasedOnAuth();
+    // admin panel gizlenir
   }
 
-  // Başlangıç
-  loadData();
-  initLogin();
-  fullRender();
-  // ekstra admin güvenlik için sonradan ayar
-  // whatsapp satış için global tanım tamam
-  // tüm modüller yanda çalışır.
+  // ilk render
+  function init() {
+    loadData();
+    renderSidebarModules();
+    renderPackages();
+    renderProductLists();
+    renderServiceLists();
+    renderSubscriptionLists();
+    if(currentUser) updateUIBasedOnAuth();
+    else updateUIBasedOnAuth();
+    // admin panel için UI güncellemesi
+    if(currentUser?.isAdmin) {
+      renderAdminProductList(); renderAdminServiceList(); renderAdminSubList();
+      setupAdminCrud();
+    }
+    // Event listeners
+    document.getElementById("registerBtn").onclick = register;
+    document.getElementById("loginBtn").onclick = login;
+    document.getElementById("logoutBtn").onclick = logout;
+    document.getElementById("logoutAdminBtn")?.addEventListener("click", logout);
+  }
+  init();
 </script>
 </body>
 </html>
